@@ -1,0 +1,60 @@
+{
+  "description": "紫微斗数主星安星规则",
+  "ziwei_system": {
+    "description": "紫微星系（从紫微位置逆时针排布）",
+    "stars": [
+      { "name": "紫微", "offset": 0 },
+      { "name": "天机", "offset": -1 },
+      { "name": "太阳", "offset": -3 },
+      { "name": "武曲", "offset": -4 },
+      { "name": "天同", "offset": -5 },
+      { "name": "廉贞", "offset": -8 }
+    ]
+  },
+  "tianfu_system": {
+    "description": "天府星系（从天府位置顺时针排布，天府在紫微三合宫）",
+    "tianfu_offset": 4,
+    "stars": [
+      { "name": "天府", "offset": 0 },
+      { "name": "太阴", "offset": 1 },
+      { "name": "贪狼", "offset": 2 },
+      { "name": "巨门", "offset": 3 },
+      { "name": "天相", "offset": 4 },
+      { "name": "天梁", "offset": 5 },
+      { "name": "七杀", "offset": 6 },
+      { "name": "破军", "offset": 9 }
+    ]
+  },
+  "auxiliary_stars": {
+    "description": "辅助星曜",
+    "left_fu": {
+      "name": "左辅",
+      "rule": "从辰宫起正月，顺数生月"
+    },
+    "right_bi": {
+      "name": "右弼",
+      "rule": "从戌宫起正月，逆数生月"
+    },
+    "lucun": {
+      "name": "禄存",
+      "rule": "根据生年天干定位",
+      "positions": {
+        "甲": 2, "乙": 3, "丙": 5, "丁": 6, "戊": 5,
+        "己": 6, "庚": 8, "辛": 9, "壬": 11, "癸": 0
+      }
+    }
+  },
+  "four_transforms": {
+    "description": "四化星（化禄、化权、化科、化忌）",
+    "甲": { "lu": "廉贞", "quan": "破军", "ke": "武曲", "ji": "太阳" },
+    "乙": { "lu": "天机", "quan": "天梁", "ke": "紫微", "ji": "太阴" },
+    "丙": { "lu": "天同", "quan": "天机", "ke": "文昌", "ji": "廉贞" },
+    "丁": { "lu": "太阴", "quan": "天同", "ke": "天机", "ji": "巨门" },
+    "戊": { "lu": "贪狼", "quan": "太阴", "ke": "右弼", "ji": "天机" },
+    "己": { "lu": "武曲", "quan": "贪狼", "ke": "天梁", "ji": "文曲" },
+    "庚": { "lu": "太阳", "quan": "武曲", "ke": "太阴", "ji": "天同" },
+    "辛": { "lu": "巨门", "quan": "太阳", "ke": "文曲", "ji": "文昌" },
+    "壬": { "lu": "天梁", "quan": "紫微", "ke": "左辅", "ji": "武曲" },
+    "癸": { "lu": "破军", "quan": "巨门", "ke": "太阴", "ji": "贪狼" }
+  }
+}

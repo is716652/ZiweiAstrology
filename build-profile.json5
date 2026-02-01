@@ -1,0 +1,56 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\is716\\.ohos\\config\\default_ZiweiAstrology_Jtqp_uErc8rQ1p579b2J1t91r0KBiLO1OoZZ64TjG7I=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001BB2A6A0D8D4C7D79CA7756FA1B23D5FECDFBE764ED119004A185B0FD71ADEF99DD21E2A5799C1AB",
+          "profile": "C:\\Users\\is716\\.ohos\\config\\default_ZiweiAstrology_Jtqp_uErc8rQ1p579b2J1t91r0KBiLO1OoZZ64TjG7I=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\is716\\.ohos\\config\\default_ZiweiAstrology_Jtqp_uErc8rQ1p579b2J1t91r0KBiLO1OoZZ64TjG7I=.p12",
+          "storePassword": "0000001B0C6536C106C602371A36EEDC76D557030555697C7409A0F2F87D671C9D82CE30763B453E92C87E"
+        }
+      }
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "targetSdkVersion": "6.0.0(20)",
+        "compatibleSdkVersion": "6.0.0(20)",
+        "runtimeOS": "HarmonyOS",
+        "buildOption": {
+          "strictMode": {
+            "caseSensitiveCheck": true,
+            "useNormalizedOHMUrl": true
+          }
+        }
+      }
+    ],
+    "buildModeSet": [
+      {
+        "name": "debug",
+      },
+      {
+        "name": "release"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}
