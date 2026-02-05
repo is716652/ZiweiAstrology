@@ -125,6 +125,14 @@ struct ZiweiChartPage {
                 mingGongIndex: $mingGongIndex,
                 shenGongIndex: $shenGongIndex,
                 onPalaceClick: (palace: PalaceInfo) => {
+                  console.info(`===== 点击宫位 =====`);
+                  console.info(`宫位名称: ${palace.name}`);
+                  console.info(`地支索引: ${palace.index}`);
+                  console.info(`干支: ${palace.gan}${palace.zhi}`);
+                  console.info(`主星数量: ${palace.mainStars.length}, 内容: ${JSON.stringify(palace.mainStars)}`);
+                  console.info(`辅星数量: ${palace.auxiliaryStars.length}, 内容: ${JSON.stringify(palace.auxiliaryStars)}`);
+                  console.info(`四化数量: ${palace.transforms.length}, 内容: ${JSON.stringify(palace.transforms)}`);
+                  
                   this.selectedPalace = palace;
                   this.showPalaceDetail = true;
                 }
@@ -360,121 +368,140 @@ struct ZiweiChartPage {
   buildPalaceDetailSheet() {
     Column({ space: 16 }) {
       if (this.selectedPalace) {
-      // 标题栏
-      Row({ space: 8 }) {
-        Text(this.selectedPalace!.name.replace(' ★', '').replace(' (身)', ''))
-          .fontSize(20)
-          .fontWeight(FontWeight.Bold)
-          .fontColor('#2C2416')
-        
-        Text(`${this.selectedPalace!.gan}${this.selectedPalace!.zhi}`)
-          .fontSize(16)
-          .fontColor('#666666')
-      }
-      .width('100%')
-      .padding({ left: 16, right: 16, top: 20 })
+        // 标题栏
+        Row({ space: 8 }) {
+          Text(this.selectedPalace!.name.replace(' ★', '').replace(' (身)', ''))
+            .fontSize(20)
+            .fontWeight(FontWeight.Bold)
+            .fontColor('#2C2416')
+          
+          Text(`${this.selectedPalace!.gan}${this.selectedPalace!.zhi}`)
+            .fontSize(16)
+            .fontColor('#666666')
+        }
+        .width('100%')
+        .padding({ left: 16, right: 16, top: 20 })
 
-      Divider()
-        .strokeWidth(1)
-        .color('#EEEEEE')
+        Divider()
+          .strokeWidth(1)
+          .color('#EEEEEE')
 
-      Scroll() {
-        Column({ space: 12 }) {
-          // 主星
-          if (this.selectedPalace!.mainStars.length > 0) {
-            Column({ space: 6 }) {
-              Text('主星')
-                .fontSize(14)
-                .fontWeight(FontWeight.Bold)
-                .fontColor('#666666')
-              
-              Flex({ wrap: FlexWrap.Wrap }) {
-                ForEach(this.selectedPalace!.mainStars, (star: string) => {
-                  Text(star)
-                    .fontSize(14)
-                    .fontColor('#FFFFFF')
-                    .backgroundColor('#8B4513')
-                    .padding({ left: 12, right: 12, top: 6, bottom: 6 })
-                    .borderRadius(16)
-                    .margin({ right: 8, bottom: 8 })
-                })
+        Scroll() {
+          Column({ space: 12 }) {
+            // 主星
+            if (this.selectedPalace!.mainStars.length > 0) {
+              Column({ space: 6 }) {
+                Text('主星')
+                  .fontSize(14)
+                  .fontWeight(FontWeight.Bold)
+                  .fontColor('#666666')
+                
+                Flex({ wrap: FlexWrap.Wrap }) {
+                  ForEach(this.selectedPalace!.mainStars, (star: string) => {
+                    Text(star)
+                      .fontSize(14)
+                      .fontColor('#FFFFFF')
+                      .backgroundColor('#8B4513')
+                      .padding({ left: 12, right: 12, top: 6, bottom: 6 })
+                      .borderRadius(16)
+                      .margin({ right: 8, bottom: 8 })
+                  })
+                }
               }
+              .width('100%')
+              .alignItems(HorizontalAlign.Start)
             }
-            .width('100%')
-            .alignItems(HorizontalAlign.Start)
-          }
 
-          // 辅星
-          if (this.selectedPalace!.auxiliaryStars.length > 0) {
-            Column({ space: 6 }) {
-              Text('辅星')
-                .fontSize(14)
-                .fontWeight(FontWeight.Bold)
-                .fontColor('#666666')
-              
-              Flex({ wrap: FlexWrap.Wrap }) {
-                ForEach(this.selectedPalace!.auxiliaryStars, (star: string) => {
-                  Text(star)
-                    .fontSize(14)
-                    .fontColor('#FFFFFF')
-                    .backgroundColor('#4682B4')
-                    .padding({ left: 12, right: 12, top: 6, bottom: 6 })
-                    .borderRadius(16)
-                    .margin({ right: 8, bottom: 8 })
-                })
+            // 辅星
+            if (this.selectedPalace!.auxiliaryStars.length > 0) {
+              Column({ space: 6 }) {
+                Text('辅星')
+                  .fontSize(14)
+                  .fontWeight(FontWeight.Bold)
+                  .fontColor('#666666')
+                
+                Flex({ wrap: FlexWrap.Wrap }) {
+                  ForEach(this.selectedPalace!.auxiliaryStars, (star: string) => {
+                    Text(star)
+                      .fontSize(14)
+                      .fontColor('#FFFFFF')
+                      .backgroundColor('#4682B4')
+                      .padding({ left: 12, right: 12, top: 6, bottom: 6 })
+                      .borderRadius(16)
+                      .margin({ right: 8, bottom: 8 })
+                  })
+                }
               }
+              .width('100%')
+              .alignItems(HorizontalAlign.Start)
             }
-            .width('100%')
-            .alignItems(HorizontalAlign.Start)
-          }
 
-          // 四化
-          if (this.selectedPalace!.transforms.length > 0) {
-            Column({ space: 6 }) {
-              Text('四化')
-                .fontSize(14)
-                .fontWeight(FontWeight.Bold)
-                .fontColor('#666666')
-              
-              Flex({ wrap: FlexWrap.Wrap }) {
-                ForEach(this.selectedPalace!.transforms, (transform: string) => {
-                  Text(transform)
-                    .fontSize(14)
-                    .fontColor('#FFFFFF')
-                    .backgroundColor('#DC143C')
-                    .padding({ left: 12, right: 12, top: 6, bottom: 6 })
-                    .borderRadius(16)
-                    .margin({ right: 8, bottom: 8 })
-                })
+            // 四化
+            if (this.selectedPalace!.transforms.length > 0) {
+              Column({ space: 6 }) {
+                Text('四化')
+                  .fontSize(14)
+                  .fontWeight(FontWeight.Bold)
+                  .fontColor('#666666')
+                
+                Flex({ wrap: FlexWrap.Wrap }) {
+                  ForEach(this.selectedPalace!.transforms, (transform: string) => {
+                    Text(transform)
+                      .fontSize(14)
+                      .fontColor('#FFFFFF')
+                      .backgroundColor('#DC143C')
+                      .padding({ left: 12, right: 12, top: 6, bottom: 6 })
+                      .borderRadius(16)
+                      .margin({ right: 8, bottom: 8 })
+                  })
+                }
               }
+              .width('100%')
+              .alignItems(HorizontalAlign.Start)
             }
-            .width('100%')
-            .alignItems(HorizontalAlign.Start)
-          }
 
-          // 空宫提示
-          if (this.selectedPalace!.mainStars.length === 0 && 
-              this.selectedPalace!.auxiliaryStars.length === 0) {
-            Text('此宫无主星，需参考对宫星曜')
-              .fontSize(14)
-              .fontColor('#999999')
-              .fontStyle(FontStyle.Italic)
+            // 空宫提示
+            if (this.selectedPalace!.mainStars.length === 0 && 
+                this.selectedPalace!.auxiliaryStars.length === 0) {
+              Text('此宫无主星，需参考对宫星曜')
+                .fontSize(14)
+                .fontColor('#999999')
+                .fontStyle(FontStyle.Italic)
+            }
           }
         }
-      }
-      .width('100%')
-      .padding(16)
-      .layoutWeight(1)
+        .width('100%')
+        .padding(16)
+        .layoutWeight(1)
 
-      Button('关闭')
-        .width('90%')
-        .height(44)
-        .backgroundColor('#F5F5F5')
-        .fontColor('#666666')
-        .onClick(() => {
-          this.showPalaceDetail = false;
-        })
-        .margin({ bottom: 20 })
+        Button('关闭')
+          .width('90%')
+          .height(44)
+          .backgroundColor('#F5F5F5')
+          .fontColor('#666666')
+          .onClick(() => {
+            this.showPalaceDetail = false;
+          })
+          .margin({ bottom: 20 })
+      } else {
+        // selectedPalace为null时显示提示
+        Column({ space: 16 }) {
+          Text('未选择宫位')
+            .fontSize(16)
+            .fontColor('#999999')
+          
+          Button('关闭')
+            .width('90%')
+            .height(44)
+            .backgroundColor('#F5F5F5')
+            .fontColor('#666666')
+            .onClick(() => {
+              this.showPalaceDetail = false;
+            })
+        }
+        .width('100%')
+        .height(500)
+        .justifyContent(FlexAlign.Center)
       }
     }
     .width('100%')
